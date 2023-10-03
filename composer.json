@@ -1,5 +1,5 @@
 {
-    "name": "Jeckerson/phpkafka",
+    "name": "jeckerson/phpkafka",
     "description": "A kafka client. Support php-fpm and Swoole.",
     "license": "Apache-2.0",
     "require": {
