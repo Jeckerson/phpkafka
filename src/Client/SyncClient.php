@@ -220,5 +220,14 @@ class SyncClient implements ClientInterface
         /** @var SaslAuthenticateResponse $authenticateResponse */
         $authenticateResponse = $this->recv($correlationId);
         ErrorCode::check($authenticateResponse->getErrorCode());
+
+        if ($class->hasChallenge()) {
+            $challenge = $authenticateResponse->getAuthBytes();
+            $authenticateRequest = new SaslAuthenticateRequest();
+            $authenticateRequest->setAuthBytes($class->getAuthBytes($challenge));
+            $correlationId = $this->send($authenticateRequest);
+            $authenticateResponse = $this->recv($correlationId);
+            ErrorCode::check($authenticateResponse->getErrorCode());
+        }
     }
 }

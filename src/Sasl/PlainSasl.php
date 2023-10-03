@@ -40,4 +40,9 @@ class PlainSasl implements SaslInterface
 
         return sprintf("\x00%s\x00%s", $config['username'], $config['password']);
     }
+
+    public function hasChallenge(): bool
+    {
+        return false;
+    }
 }

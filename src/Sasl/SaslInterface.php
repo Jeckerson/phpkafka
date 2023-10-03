@@ -19,4 +19,6 @@ interface SaslInterface
      * 返回授权信息.
      */
     public function getAuthBytes(): string;
+
+    public function hasChallenge(): bool;
 }
